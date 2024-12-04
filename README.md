@@ -100,7 +100,8 @@ Ce script implémente un **système de recommandation de produits** basé sur la
    [Télécharger les données](https://mega.nz/file/CUkjVIBL#yDZ7bl78onP2LrV8qE2idg01mES7klB22XeA9g8kKpg) 
    Placez-le dans le dossier `racine` du projet.
    
-   - Je vous prie de m'excuser pour cela car ce n'est pas très profesionnel de mettre un lien à télécharger censé compléter un projet qui devrait déjà l'être en l'état, mais c'est simplement que j'ai eu beaucoup       de problèmes avec git lfs -
+   - Je vous prie de m'excuser pour cela car ce n'est pas très professionnel de mettre un lien à télécharger censé compléter un projet qui devrait déjà l'être en l'état, mais c'est simplement car j'ai eu 
+    beaucoup de problèmes avec git lfs.
 
    Pour lancer le script utiliser cette commande.
    streamlit run matrix_deconstruct.py
