@@ -5,8 +5,9 @@ from lightfm.evaluation import precision_at_k, recall_at_k
 import os
 import pandas as pd
 
-# Chemin pour charger la matrice sparse
-sparse_file = r"C:\data\user_product_sparse.npz"
+# Chemin dynamique pour charger la matrice sparse
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+sparse_file = os.path.join(BASE_DIR, "user_product_sparse.npz")
 
 # Fonction pour réduire la matrice si elle est trop grande
 def reduce_sparse_matrix(matrix, max_users=50000, max_items=50000):
@@ -73,7 +74,7 @@ def save_feedback(user_id, feedback):
         "loss_mode": ["warp"],  # Méthode utilisée
     }
 
-    feedback_file = r"C:\data\csv_output\user_feedback.csv"
+    feedback_file = os.path.join(BASE_DIR, "user_feedback.csv")
     if os.path.exists(feedback_file):
         feedback_df = pd.read_csv(feedback_file)
         feedback_df = pd.concat([feedback_df, pd.DataFrame(feedback_data)], ignore_index=True)
