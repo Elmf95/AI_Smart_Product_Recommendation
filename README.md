@@ -86,7 +86,6 @@ L'interface Gradio s'ouvrira dans un navigateur ou proposera un lien partageable
 ├── matrix_construct.py
 ├── matrix_user_productLightFM.py
 ├── requirements.txt
-├── vercel.json
 ├── data/
 │   ├── amazon_reviews_us_Digital_Music_Purchase_v1_00.tsv
 │   ├── filtered_reviews.csv
