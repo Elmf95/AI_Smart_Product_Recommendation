@@ -1,20 +1,12 @@
-import gradio as gr
 import numpy as np
-from scipy.sparse import load_npz, csr_matrix
+from scipy.sparse import load_npz
 from lightfm import LightFM
+from lightfm.evaluation import precision_at_k, recall_at_k
 import os
-import pandas as pd  # Ajout de pandas
+import pandas as pd
 
 # Chemin pour charger la matrice sparse
 sparse_file = r"C:\data\user_product_sparse.npz"
-
-# Chemin pour enregistrer le feedback utilisateur
-feedback_folder = r"C:\data\csv_output"
-feedback_file = os.path.join(feedback_folder, "user_feedback.csv")
-
-# Vérifier si le dossier existe, sinon le créer
-if not os.path.exists(feedback_folder):
-    os.makedirs(feedback_folder)
 
 # Fonction pour réduire la matrice si elle est trop grande
 def reduce_sparse_matrix(matrix, max_users=50000, max_items=50000):
@@ -61,6 +53,18 @@ def recommend_products(user_id, n_recommendations=10):
     top_items = np.argsort(-scores)[:n_recommendations]
     return top_items
 
+# Fonction pour calculer les métriques d'évaluation
+def evaluate_model(sparse_matrix, model, k=10):
+    # Calcul de la précision et du rappel pour les utilisateurs
+    precision = precision_at_k(model, sparse_matrix, k=k).mean()
+    recall = recall_at_k(model, sparse_matrix, k=k).mean()
+
+    print(f"Précision à {k} : {precision:.4f}")
+    print(f"Rappel à {k} : {recall:.4f}")
+
+# Évaluation du modèle sur les métriques de précision et de rappel à k
+evaluate_model(sparse_matrix, model, k=10)
+
 # Fonction pour enregistrer le feedback
 def save_feedback(user_id, feedback):
     feedback_data = {
@@ -69,6 +73,7 @@ def save_feedback(user_id, feedback):
         "loss_mode": ["warp"],  # Méthode utilisée
     }
 
+    feedback_file = r"C:\data\csv_output\user_feedback.csv"
     if os.path.exists(feedback_file):
         feedback_df = pd.read_csv(feedback_file)
         feedback_df = pd.concat([feedback_df, pd.DataFrame(feedback_data)], ignore_index=True)
@@ -90,10 +95,11 @@ def recommend_and_save_feedback(user_id, feedback):
 # HTML pour le titre personnalisé
 custom_title = """
 <h1><b>Système de recommandations de produits</b></h1>
-<p style="font-size:14px; color:gray;">Matrice réduite à 50 000 utilisateurs et 50 000 produits par rapport à la taille initiale de 796 587 utilisateurs et 699 450 produits afin d'économiser de la mémoire (ne pas dépasser 49).</p>
+<p style="font-size:14px; color:gray;">Matrice réduite à 50 000 utilisateurs et 50 000 produits par rapport à la taille initiale de 796 587 utilisateurs et 699 450 produits afin d'économiser de la mémoire (ne pas dépasser 49 999).</p>
 """
 
 # Interface Gradio
+import gradio as gr
 interface = gr.Interface(
     fn=recommend_and_save_feedback,
     inputs=[
