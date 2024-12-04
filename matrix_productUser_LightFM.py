@@ -90,7 +90,7 @@ def recommend_and_save_feedback(user_id, feedback):
 # HTML pour le titre personnalisé
 custom_title = """
 <h1><b>Système de recommandations de produits</b></h1>
-<p style="font-size:14px; color:gray;">Matrice réduite à 50 000 utilisateurs et 50 000 produits par rapport à la taille initiale de 796 587 utilisateurs et 699 450 produits afin d'économiser de la mémoire (ne pas dépasser 49 999).</p>
+<p style="font-size:14px; color:gray;">Matrice réduite à 50 000 utilisateurs et 50 000 produits par rapport à la taille initiale de 796 587 utilisateurs et 699 450 produits afin d'économiser de la mémoire (ne pas dépasser 49).</p>
 """
 
 # Interface Gradio
