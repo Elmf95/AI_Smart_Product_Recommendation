@@ -41,10 +41,30 @@ Ce projet implémente un système de recommandations contextuelles pour des prod
 - **Python 3.8 ou supérieur**
 - Bibliothèques Python : `pandas`, `numpy`, `matplotlib`, `seaborn`, `scipy`, `lightfm`, `gradio`
 
+  
+### Installer un compilateur C
+
+**LightFM** nécessite un compilateur C pour construire certaines de ses parties. Sur Windows, vous devez installer **Build Tools for Visual Studio**. Suivez ces étapes :
+
+ **Téléchargez et installez les outils de construction de Visual Studio** depuis ce [lien officiel](https://visualstudio.microsoft.com/visual-cpp-build-tools/).
+
+   Pendant l’installation, sélectionnez :
+   - **Desktop development with C++**.
+
+   Assurez-vous que les options suivantes sont cochées :
+   - **MSVC v142**.
+   - **Windows 10 SDK**.
+
+   **Redémarrez votre terminal** après l'installation.
+
+
+
 ### Installation des dépendances
 Assurez-vous d'avoir installé toutes les dépendances avant d'exécuter les scripts. Vous pouvez utiliser la commande suivante :
 ```bash
 pip install pandas numpy matplotlib seaborn scipy lightfm gradio
+ou directement grâce à :
+pip install -r requirements.txt
 ```
 
 ## Instructions d'exécution
@@ -69,7 +89,26 @@ Utilisez le script `matrix_construct.py` pour créer et sauvegarder la matrice s
 python matrix_construct.py
 ```
 
-### 4. Entraînement et interface interactive
+### 4. Script `matrix_deconstruct.py`
+
+## Rôle
+Ce script implémente un **système de recommandation de produits** basé sur la **décomposition matricielle (SVD)**. Il utilise les évaluations passées des utilisateurs pour prédire leurs préférences et afficher des recommandations via une interface **Streamlit**.
+
+## Utilisation
+
+1. Téléchargez le fichier de données `filtered_reviews.csv` via ce lien MEGA :  
+   [Télécharger les données](https://mega.nz/file/CUkjVIBL#yDZ7bl78onP2LrV8qE2idg01mES7klB22XeA9g8kKpg) 
+   Placez-le dans le dossier `racine` du projet.
+
+   Pour lancer le script utiliser cette commande.
+   streamlit run matrix_deconstruct.py
+
+   Puis ouvrez le fichier csv sous format excel et choisissez un ID d'utilisateur proposé par la table.
+
+
+
+
+### 5. Entraînement et interface interactive
 Lancez `matrix_user_productLightFM.py` pour entraîner le modèle LightFM et utiliser l'interface utilisateur interactive :
 ```bash
 python matrix_user_productLightFM.py
@@ -86,14 +125,13 @@ L'interface Gradio s'ouvrira dans un navigateur ou proposera un lien partageable
 ├── matrix_construct.py
 ├── matrix_user_productLightFM.py
 ├── requirements.txt
-├── data/
-│   ├── amazon_reviews_us_Digital_Music_Purchase_v1_00.tsv
 │   ├── filtered_reviews.csv
 │   ├── user_product_sparse.npz
 ```
 
 ## Notes
 - Vérifiez que le fichier TSV initial est bien placé dans le répertoire du repository.
+- Vérifiez que le fichier CSV initial est bien placé dans le répertoire du repository après téléchargement.
 - Réduisez la matrice si vous rencontrez des problèmes de mémoire.
 - Modifiez les hyperparamètres du modèle LightFM pour ajuster les performances.
 
