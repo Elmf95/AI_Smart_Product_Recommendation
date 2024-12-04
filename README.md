@@ -69,7 +69,7 @@ pip install -r requirements.txt
 
 ## Instructions d'exécution
 
-(Vous n'aurez besoin d'utiliser que la partie 4 pour faire fonctionner le projet);
+(Vous n'aurez besoin d'utiliser que la partie 4 et 5 pour faire fonctionner le projet);
 
 ### 1. Prétraitement des données
 Exécutez le script `read_and_filter.py` pour charger, filtrer et sauvegarder les données prétraitées :
@@ -110,10 +110,18 @@ Ce script implémente un **système de recommandation de produits** basé sur la
 
 ### 5. Entraînement et interface interactive
 Lancez `matrix_user_productLightFM.py` pour entraîner le modèle LightFM et utiliser l'interface utilisateur interactive :
+
+Ce script implémente un système de recommandation de produits utilisant l'algorithme LightFM. Il fait des recommandations personnalisées pour chaque utilisateur à partir d'une matrice sparse des interactions utilisateur-produit, en utilisant la méthode WARP
+
+Pour lancer le script utilisez cette commande après avoir vérifié que le fichier est bien dans la racine du projet, si le git clone s'est bien passé il y sera.
 ```bash
 python matrix_user_productLightFM.py
 ```
-L'interface Gradio s'ouvrira dans un navigateur ou proposera un lien partageable.
+L'interface Gradio vrira dans un navigateur ou proposera un lien partageableoù vous pourrez :
+
+Entrer l'ID d'un utilisateur pour générer des recommandations de produits.
+Donner votre feedback sur la pertinence des recommandations ("Oui" ou "Non").
+Le feedback utilisateur est ensuite enregistré dans un fichier CSV (user_feedback.csv) pour un suivi des préférences
 
 
 ## Structure du dépôt
