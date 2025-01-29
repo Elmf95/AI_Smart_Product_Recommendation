@@ -96,17 +96,15 @@ Ce script implémente un **système de recommandation de produits** basé sur la
 
 ## Utilisation
 
-1. Téléchargez le fichier de données `filtered_reviews.csv` via ce lien MEGA :  
+    - Vérifiez que le fichier est dans le dossier src du projet sinon le télécharger via le lien MEGA suivant :
+   -  Téléchargez le fichier de données `filtered_reviews.csv` via ce lien MEGA :  
    [Télécharger les données](https://mega.nz/file/CUkjVIBL#yDZ7bl78onP2LrV8qE2idg01mES7klB22XeA9g8kKpg) 
-   Placez-le dans le dossier `racine` du projet.
-   
-   - Je vous prie de m'excuser pour cela car ce n'est pas très professionnel de mettre un lien à télécharger censé compléter un projet qui devrait déjà l'être en l'état, mais c'est simplement car j'ai eu 
-    beaucoup de problèmes avec git lfs.
+   Placez-le dans le dossier `src` du projet.
 
    Pour lancer le script utiliser cette commande.
-   streamlit run matrix_deconstruct.py
+   streamlit run matrix_decomposition.py
 
-   Puis ouvrez le fichier csv sous format excel et choisissez un ID d'utilisateur proposé par la table.
+   Puis ouvrez le fichier csv sous format excel et choisissez un ID d'utilisateur proposé par la table depuis le fichier CSV.
 
 
 
