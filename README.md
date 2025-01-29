@@ -102,7 +102,7 @@ Ce script implémente un **système de recommandation de produits** basé sur la
    Placez-le dans le dossier `src` du projet.
 
    Pour lancer le script utiliser cette commande.
-   streamlit run matrix_decomposition.py
+   streamlit run matrix_decomposition.py depuis le sous dossier 'src' du repo.
 
    Puis ouvrez le fichier csv sous format excel et choisissez un ID d'utilisateur proposé par la table depuis le fichier CSV.
 
